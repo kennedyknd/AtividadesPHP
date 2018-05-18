@@ -22,6 +22,7 @@ include_once '../cabecalho.php';
 
     <table class="table table-bordered table-hover table-striped table-condensed">
         <tr>
+            <td>Ações</td>
             <td>Id</td>
             <td>Matricula</td>
             <td>Nome</td>
@@ -37,6 +38,10 @@ include_once '../cabecalho.php';
         <?php foreach ($alunos as $aluno){
             echo "
             <tr>
+                <td>
+                        <a href='add.php?id_aluno={$aluno['id_aluno']}'>Alterar</a>
+                        <a href='processamento.php?acao=excluir&id_aluno={$aluno['id_aluno']}'>Excluir</a>
+                </td>
                 <td>{$aluno['id_aluno']}</td>
                 <td>{$aluno['matricula']}</td>
                 <td>{$aluno['nome']}</td>

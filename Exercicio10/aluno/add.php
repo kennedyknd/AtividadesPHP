@@ -9,25 +9,33 @@ $cursos = $curso->recuperarDados();
 $responsavel = new Responsavel();
 $responsaveis = $responsavel->recuperarDados();
 
+$aluno = new Aluno();
+
+if(!empty($_GET['id_aluno'])){
+    $aluno->carregarPorId($_GET['id_aluno']);
+}
+
 include_once '../cabecalho.php';
 ?>
     <h1 class="text-center">Alunos</h1>
     <br>
-    <form class="form-horizontal" method="post" action="processamento.php">
+    <form class="form-horizontal" method="post" action="processamento.php?acao=salvar">
+
+        <input type="hidden" name="id_aluno" class="form-control" value="<?php echo $aluno->getIdAluno();?>">
 
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="matricula">Matricula</label>
-                <input type="text" class="form-control" id="matricula" name="matricula" required>
+                <input type="text" class="form-control" value="<?php echo $aluno->getMatricula();?>" id="matricula" name="matricula" required>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <input type="text" class="form-control" value="<?php echo $aluno->getNome();?>" id="nome" name="nome" required>
             </div>
             <div class="form-group col-md-4">
                 <label for="telefone">Telefone</label>
-                <input type="text" class="form-control" id="telefone" name="telefone" required>
+                <input type="text" class="form-control" value="<?php echo $aluno->getTelefone();?>" id="telefone" name="telefone" required>
             </div>
 
         </div>
@@ -35,12 +43,12 @@ include_once '../cabecalho.php';
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="endereco">Endereço</label>
-                <input type="text" class="form-control" id="endereco" name="endereco" required>
+                <input type="text" class="form-control" value="<?php echo $aluno->getEndereco();?>" id="endereco" name="endereco" required>
             </div>
 
             <div class="form-group col-md-4">
                 <label for="data_nascimento">Data Nascimento</label>
-                <input type="text" class="form-control" id="data_nascimento" name="data_nascimento" required>
+                <input type="date" class="form-control" value="<?php echo $aluno->getDataNascimento();?>" id="data_nascimento" name="data_nascimento" required>
             </div>
             <div class="form-group col-md-4">
                 <label for="sexo" class="col-sm-2 control-label">Sexo</label>
@@ -85,7 +93,7 @@ include_once '../cabecalho.php';
 
             <div class="form-group col-md-4">
                 <label for="nota">Nota</label>
-                <input type="text" class="form-control" id="nota" name="nota" required>
+                <input type="text" class="form-control" value="<?php echo $aluno->getNota();?>" id="nota" name="nota" required>
             </div>
 
 

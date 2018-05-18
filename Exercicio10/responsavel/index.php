@@ -22,6 +22,7 @@ include_once '../cabecalho.php';
 
     <table class="table table-bordered table-hover table-striped table-condensed">
         <tr>
+            <td>Ações</td>
             <td>Id</td>
             <td>Nome</td>
             <td>Telefone</td>
@@ -33,6 +34,10 @@ include_once '../cabecalho.php';
         <?php foreach ($responsaveis as $responsavel){
             echo "
             <tr>
+                <td>
+                        <a href='add.php?id_responsavel={$responsavel['id_responsavel']}'>Alterar</a>
+                        <a href='processamento.php?acao=excluir&id_responsavel={$responsavel['id_responsavel']}'>Excluir</a>
+                </td>
                 <td>{$responsavel['id_responsavel']}</td>
                 <td>{$responsavel['nome']}</td>
                 <td>{$responsavel['telefone']}</td>
